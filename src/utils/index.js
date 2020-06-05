@@ -14,19 +14,19 @@ export const FIREBASE_RESPONSE = {
   INVALID_ACTION_CODE: 'auth/invalid-action-code',
   QUOTA_EXCEEDED_STORAGE: 'storage/quota-exceeded',
   UNAUTHENTICATED_STORAGE: 'storage/unauthenticated',
-  UNAUTHORIZED_STORAGE: 'storage/unauthorized',
+  UNAUTHORIZED_STORAGE: 'storage/unauthorized'
 };
 
 export const messages = {
-  en: english,
+  en: english
 };
 
-const getIntlContext = (locale) => {
+const getIntlContext = locale => {
   const cache = createIntlCache();
   return createIntl(
     {
       locale,
-      messages: messages[locale],
+      messages: messages[locale]
     },
     cache
   );
@@ -36,11 +36,11 @@ export const firebaseError = (error, locale) => {
   const intl = getIntlContext(locale);
   return intl.formatMessage({
     id: error,
-    defaultMessage: messages[locale]['utils.default'],
+    defaultMessage: messages[locale]['utils.default']
   });
 };
 
-export const validateEmail = (email) => {
+export const validateEmail = email => {
   return email.match(
     // eslint-disable-next-line no-useless-escape
     /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
@@ -51,13 +51,13 @@ export const inputValidations = (email, password, locale) => {
   let inputs = {
     email: {
       modifier: null,
-      message: null,
+      message: null
     },
     password: {
       modifier: null,
-      message: null,
+      message: null
     },
-    canSubmit: null,
+    canSubmit: null
   };
   const intl = getIntlContext(locale);
 
@@ -70,7 +70,7 @@ export const inputValidations = (email, password, locale) => {
   if (email && !isValidEmail) {
     setInputs('email', {
       modifier: 'is-danger',
-      message: intl.formatMessage({ id: 'utils.invalidEmail' }),
+      message: intl.formatMessage({ id: 'utils.invalidEmail' })
     });
   }
 
@@ -79,12 +79,12 @@ export const inputValidations = (email, password, locale) => {
   if (isValidPassword) {
     setInputs('password', {
       modifier: 'is-success',
-      message: intl.formatMessage({ id: 'utils.safePassword' }),
+      message: intl.formatMessage({ id: 'utils.safePassword' })
     });
   } else if (password) {
     setInputs('password', {
       modifier: 'is-danger',
-      message: intl.formatMessage({ id: 'utils.unsafePassword' }),
+      message: intl.formatMessage({ id: 'utils.unsafePassword' })
     });
   }
 
@@ -100,6 +100,5 @@ export const availableLocales = Object.keys(messages);
 export const browserLocale = navigator.language.split(/[-_]/)[0];
 
 export const flags = {
-  en,
-  es,
+  en
 };

@@ -19,14 +19,6 @@ describe('<PrivateRoute /> rendering', () => {
     jest.spyOn(actions, 'auth').mockImplementation(jest.fn);
   });
 
-  it('should render without crashing', () => {
-    const { component } = mountWithProviders(<PrivateRoute />)({
-      user: {}
-    });
-
-    expect(component).toMatchSnapshot();
-  });
-
   it('should redirect to /login when the user is not authenticated', () => {
     const { component } = mountWithProviders(<PrivateRoute />)({
       user: {}

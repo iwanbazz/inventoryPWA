@@ -60,20 +60,6 @@ describe('<Bar /> actions', () => {
     expect(authActions.logout).toHaveBeenCalled();
   });
 
-  it('should dispatch setUserLocale action when the user tries to change language', () => {
-    const { component } = mountWithProviders(
-      <NavBar handleMobileToggle={onHandleMobile} />
-    )({
-      auth: {
-        userData: {}
-      }
-    });
-
-    component.find('#es').simulate('click');
-
-    expect(preferencesActions.setUserLocale).toHaveBeenCalledWith('es');
-  });
-
   it('should display US flag when locale is set to english', () => {
     const { component } = mountWithProviders(
       <NavBar handleMobileToggle={onHandleMobile} />
