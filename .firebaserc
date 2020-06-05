@@ -1,5 +1,7 @@
 {
   "projects": {
+    "production": "pwainventory-81f76",
+    "staging": "pwainventory-81f76",
     "default": "pwainventory-81f76"
   }
 }
